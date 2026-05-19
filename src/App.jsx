@@ -972,7 +972,7 @@ export default function App() {
               LB
             </span>
             <span className="font-heading text-xl font-bold text-white">
-              Long<span className="text-blue-300">.dev</span>
+              Long<span className="text-blue-300">Nguyen</span>
             </span>
           </a>
 
