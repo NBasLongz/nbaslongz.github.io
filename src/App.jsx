@@ -12,6 +12,19 @@ const profile = {
 
 const projects = [
   {
+    title: "HTS-MultiResUNet: Dual-Attention CNN-Transformer",
+    category: "CV",
+    type: "Research Project",
+    description:
+      "A hybrid CNN-Transformer architecture combining MultiResUNet with Dual-Attention and Hybrid Transformer Bottleneck for biomedical image segmentation.",
+    stack: ["TensorFlow", "Keras", "Python", "OpenCV", "Deep Learning"],
+    pipeline:
+      "Multimodal input → MultiResUNet encoder → Dual-Attention refinement → Hybrid Transformer Bottleneck → Edge-Aware loss optimization → segmentation map",
+    metrics: ["5-fold CV", "Dice & Jaccard", "Edge-Aware Loss"],
+    link: "https://github.com/NBasLongz/HTS-MultiResUNet-MedSeg",
+    accent: "green",
+  },
+  {
     title: "DashBot: A3C Dashboard Generation",
     category: "RL",
     type: "Paper Reimplementation",
@@ -144,11 +157,11 @@ const skillGroups = [
   },
 ];
 
-const filters = ["All", "RL", "RAG", "NLP"];
+const filters = ["All", "RL", "RAG", "NLP", "CV"];
 
 function runPortfolioTests() {
   return [
-    { name: "shows exactly 4 featured projects", pass: projects.length === 4 },
+    { name: "shows exactly 5 featured projects", pass: projects.length === 5 },
     {
       name: "every project has a GitHub link",
       pass: projects.every((project) => project.link.startsWith("https://github.com/")),
@@ -225,10 +238,10 @@ function Reveal({ children, className = "", delay = 0 }) {
 
 function Badge({ children, accent = "cyan" }) {
   const styles = {
-    cyan: "border-cyan-300/20 bg-cyan-300/10 text-cyan-100",
-    violet: "border-violet-300/20 bg-violet-300/10 text-violet-100",
-    blue: "border-blue-300/20 bg-blue-300/10 text-blue-100",
-    green: "border-emerald-300/20 bg-emerald-300/10 text-emerald-100",
+    cyan: "border-cyan-200 bg-cyan-50 text-cyan-700",
+    violet: "border-violet-200 bg-violet-50 text-violet-700",
+    blue: "border-blue-200 bg-blue-50 text-blue-700",
+    green: "border-emerald-200 bg-emerald-50 text-emerald-700",
   };
 
   return (
@@ -245,7 +258,7 @@ function IconButton({ href, children, label }) {
       target={href.startsWith("http") ? "_blank" : undefined}
       rel={href.startsWith("http") ? "noreferrer" : undefined}
       aria-label={label}
-      className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-700/70 bg-slate-900/70 text-slate-300 transition hover:-translate-y-1 hover:border-cyan-300/60 hover:text-cyan-200"
+      className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-slate-200 bg-white/80 text-slate-600 transition hover:-translate-y-1 hover:border-cyan-400 hover:text-cyan-700 shadow-sm"
     >
       {children}
     </a>
@@ -255,15 +268,15 @@ function IconButton({ href, children, label }) {
 function AuroraBackground() {
   return (
     <div className="pointer-events-none fixed inset-0 overflow-hidden">
-      <div className="absolute inset-0 bg-[#0B1020]" />
-      <div className="absolute right-[-12%] top-[-10%] h-[38rem] w-[38rem] rounded-full bg-violet-500/14 blur-[120px] animate-aurora" />
-      <div className="absolute left-[-12%] bottom-[-15%] h-[34rem] w-[34rem] rounded-full bg-cyan-400/14 blur-[120px] animate-aurora-delayed" />
-      <div className="absolute left-[35%] top-[18%] h-[28rem] w-[28rem] rounded-full bg-blue-500/10 blur-[110px] animate-liquid" />
-      <div className="absolute right-[10%] bottom-[8%] h-[24rem] w-[24rem] rounded-full bg-emerald-400/7 blur-[110px] animate-liquid-delayed" />
-      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.035)_1px,transparent_1px)] bg-[size:54px_54px]" />
-      <div className="absolute inset-0 opacity-[0.055] bg-[radial-gradient(circle_at_20%_20%,white_0_1px,transparent_1px)] bg-[size:22px_22px]" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(96,165,250,.14),transparent_42%)]" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0B1020]/30 to-[#0B1020]" />
+      <div className="absolute inset-0 bg-[#F8FAFC]" />
+      <div className="absolute right-[-12%] top-[-10%] h-[38rem] w-[38rem] rounded-full bg-violet-400/8 blur-[120px] animate-aurora" />
+      <div className="absolute left-[-12%] bottom-[-15%] h-[34rem] w-[34rem] rounded-full bg-cyan-400/8 blur-[120px] animate-aurora-delayed" />
+      <div className="absolute left-[35%] top-[18%] h-[28rem] w-[28rem] rounded-full bg-blue-400/6 blur-[110px] animate-liquid" />
+      <div className="absolute right-[10%] bottom-[8%] h-[24rem] w-[24rem] rounded-full bg-emerald-400/5 blur-[110px] animate-liquid-delayed" />
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(15,23,42,.015)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,.015)_1px,transparent_1px)] bg-[size:54px_54px]" />
+      <div className="absolute inset-0 opacity-[0.035] bg-[radial-gradient(circle_at_20%_20%,#0F172A_0_1px,transparent_1px)] bg-[size:22px_22px]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(96,165,250,.06),transparent_42%)]" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#F8FAFC]/30 to-[#F8FAFC]" />
     </div>
   );
 }
@@ -287,7 +300,7 @@ function CursorLiquidGlow() {
     <div
       className="pointer-events-none fixed inset-0 z-[1] opacity-70 transition duration-300"
       style={{
-        background: `radial-gradient(520px circle at ${position.x}% ${position.y}%, rgba(34,211,238,.12), rgba(139,92,246,.07), transparent 58%)`,
+        background: `radial-gradient(520px circle at ${position.x}% ${position.y}%, rgba(34,211,238,.06), rgba(139,92,246,.04), transparent 58%)`,
       }}
     />
   );
@@ -305,9 +318,9 @@ function TerminalHeroCard() {
 
   return (
     <div className="relative hidden lg:block">
-      <div className="absolute -inset-4 rounded-[2.2rem] bg-gradient-to-r from-blue-400/20 via-cyan-400/10 to-violet-500/20 blur-2xl" />
+      <div className="absolute -inset-4 rounded-[2.2rem] bg-gradient-to-r from-blue-400/10 via-cyan-400/5 to-violet-500/10 blur-2xl" />
       <div className="relative overflow-hidden rounded-[1.7rem] liquid-card-strong p-6">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,rgba(96,165,250,.16),transparent_34%),radial-gradient(circle_at_0%_100%,rgba(34,211,238,.10),transparent_32%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_0%,rgba(96,165,250,.06),transparent_34%),radial-gradient(circle_at_0%_100%,rgba(34,211,238,.04),transparent_32%)]" />
         <div className="relative z-10">
           <div className="mb-5 flex items-center justify-between">
             <div className="flex gap-2">
@@ -315,11 +328,11 @@ function TerminalHeroCard() {
               <span className="h-3 w-3 rounded-full bg-yellow-400/90" />
               <span className="h-3 w-3 rounded-full bg-green-400/90" />
             </div>
-            <span className="rounded-full border border-slate-700 bg-slate-950/60 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400">
+            <span className="rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500 shadow-sm">
               terminal
             </span>
           </div>
-          <div className="rounded-[1.25rem] border border-slate-800 bg-[#0B1020]/90 p-5 font-mono text-sm shadow-inner shadow-black/40">
+          <div className="rounded-[1.25rem] border border-slate-800 bg-[#0B1020]/95 p-5 font-mono text-sm shadow-inner shadow-black/40">
             <div className="space-y-3">
               {lines.map((line) => (
                 <p key={line.text} className={line.color}>
@@ -341,19 +354,19 @@ function TerminalHeroCard() {
 function SectionTitle({ eyebrow, title, subtitle }) {
   return (
     <div className="mx-auto mb-12 max-w-3xl text-center">
-      <p className="mb-4 font-heading text-sm font-bold uppercase tracking-[0.3em] text-cyan-300">{eyebrow}</p>
-      <h2 className="font-heading text-3xl font-bold text-white md:text-5xl">{title}</h2>
-      {subtitle && <p className="mt-4 text-base leading-7 text-slate-400">{subtitle}</p>}
+      <p className="mb-4 font-heading text-sm font-bold uppercase tracking-[0.3em] text-violet-600">{eyebrow}</p>
+      <h2 className="font-heading text-3xl font-bold text-slate-900 md:text-5xl">{title}</h2>
+      {subtitle && <p className="mt-4 text-base leading-7 text-slate-600">{subtitle}</p>}
     </div>
   );
 }
 
 function HighlightCard({ value, label, accent }) {
   const colors = {
-    cyan: "text-cyan-300 hover:border-cyan-300/50",
-    violet: "text-violet-300 hover:border-violet-300/50",
-    blue: "text-blue-300 hover:border-blue-300/50",
-    green: "text-emerald-300 hover:border-emerald-300/50",
+    cyan: "text-cyan-600 hover:border-cyan-500/50",
+    violet: "text-violet-600 hover:border-violet-500/50",
+    blue: "text-blue-600 hover:border-blue-500/50",
+    green: "text-emerald-600 hover:border-emerald-500/50",
   };
 
   return (
@@ -363,7 +376,7 @@ function HighlightCard({ value, label, accent }) {
       }`}
     >
       <h3 className="font-heading text-3xl font-bold">{value}</h3>
-      <p className="mt-1 text-sm text-slate-400">{label}</p>
+      <p className="mt-1 text-sm text-slate-500">{label}</p>
     </div>
   );
 }
@@ -371,47 +384,88 @@ function HighlightCard({ value, label, accent }) {
 function ProjectVisual({ project }) {
   const accentMap = {
     cyan: {
-      glow: "bg-cyan-400/20",
-      stroke: "#67E8F9",
-      fill: "rgba(34, 211, 238, 0.12)",
-      text: "text-cyan-200",
+      glow: "bg-cyan-200/40",
+      stroke: "#0891B2",
+      fill: "rgba(8, 145, 178, 0.12)",
+      text: "text-cyan-700",
     },
     violet: {
-      glow: "bg-violet-400/20",
-      stroke: "#C4B5FD",
-      fill: "rgba(139, 92, 246, 0.14)",
-      text: "text-violet-200",
+      glow: "bg-violet-200/40",
+      stroke: "#7C3AED",
+      fill: "rgba(124, 58, 237, 0.12)",
+      text: "text-violet-700",
     },
     blue: {
-      glow: "bg-blue-400/20",
-      stroke: "#93C5FD",
-      fill: "rgba(96, 165, 250, 0.13)",
-      text: "text-blue-200",
+      glow: "bg-blue-200/40",
+      stroke: "#2563EB",
+      fill: "rgba(37, 99, 235, 0.12)",
+      text: "text-blue-700",
     },
     green: {
-      glow: "bg-emerald-400/20",
-      stroke: "#6EE7B7",
-      fill: "rgba(16, 185, 129, 0.12)",
-      text: "text-emerald-200",
+      glow: "bg-emerald-200/40",
+      stroke: "#059669",
+      fill: "rgba(5, 150, 105, 0.12)",
+      text: "text-emerald-700",
     },
   };
   const theme = accentMap[project.accent] || accentMap.cyan;
 
+  if (project.category === "CV") {
+    return (
+      <div className="relative flex h-44 items-center justify-center overflow-hidden bg-slate-50/70 border-b border-slate-100">
+        <div className={`absolute h-40 w-40 rounded-full ${theme.glow} blur-3xl transition group-hover:scale-125`} />
+        <svg className="relative z-10 h-32 w-56 transition duration-500 group-hover:scale-105" viewBox="0 0 240 140" fill="none">
+          {/* Background scanning grid */}
+          <line x1="20" y1="70" x2="220" y2="70" stroke="rgba(148, 163, 184, 0.15)" strokeWidth="1" strokeDasharray="4 4" />
+          <line x1="120" y1="10" x2="120" y2="130" stroke="rgba(148, 163, 184, 0.25)" strokeWidth="1.5" strokeDasharray="3 3" />
+          
+          {/* Organ Contour Left (Grayscale) */}
+          <path d="M 40 70 C 40 40, 90 30, 110 50 C 110 50, 115 80, 90 100 C 65 120, 40 100, 40 70 Z" stroke="#64748B" strokeWidth="1.5" strokeDasharray="2 2" fill="rgba(148, 163, 184, 0.05)" />
+          <circle cx="75" cy="70" r="15" stroke="#94A3B8" strokeWidth="1" strokeDasharray="1 1" />
+          
+          {/* Organ Contour Right (Segmented) */}
+          <path d="M 130 70 C 130 40, 180 30, 200 50 C 200 50, 205 80, 180 100 C 155 120, 130 100, 130 70 Z" stroke="#94A3B8" strokeWidth="1.5" fill="rgba(148, 163, 184, 0.05)" />
+          
+          {/* Segmented Region */}
+          <path d="M 155 65 C 155 50, 185 50, 190 65 C 190 75, 175 85, 155 65 Z" stroke={theme.stroke} strokeWidth="2.5" fill={theme.fill} className="animate-pulse" />
+          
+          {/* Attention Heatmap overlays */}
+          <circle cx="170" cy="65" r="8" fill={theme.stroke} fillOpacity="0.35" />
+          <circle cx="162" cy="72" r="5" fill={theme.stroke} fillOpacity="0.25" />
+          
+          {/* Labels */}
+          <text x="75" y="125" textAnchor="middle" fill="#64748B" fontSize="9" fontWeight="700">MRI Input</text>
+          <text x="165" y="125" textAnchor="middle" fill={theme.stroke} fontSize="9" fontWeight="700">Target Mask</text>
+          
+          {/* UI indicators */}
+          <rect x="25" y="15" width="45" height="15" rx="4" fill="rgba(100, 116, 139, 0.08)" />
+          <text x="47.5" y="25" textAnchor="middle" fill="#475569" fontSize="8" fontWeight="600">Slice #42</text>
+          
+          <rect x="170" y="15" width="45" height="15" rx="4" fill="rgba(16, 185, 129, 0.08)" />
+          <text x="192.5" y="25" textAnchor="middle" fill="#059669" fontSize="8" fontWeight="600">Dice: 0.94</text>
+        </svg>
+        <span className={`absolute bottom-5 z-10 rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs font-bold ${theme.text}`}>
+          Biomedical Seg
+        </span>
+      </div>
+    );
+  }
+
   if (project.category === "RAG") {
     return (
-      <div className="relative flex h-44 items-center justify-center overflow-hidden bg-[#0B1020]">
+      <div className="relative flex h-44 items-center justify-center overflow-hidden bg-slate-50/70 border-b border-slate-100">
         <div className={`absolute h-40 w-40 rounded-full ${theme.glow} blur-3xl transition group-hover:scale-125`} />
         <svg className="relative z-10 h-32 w-56 transition duration-500 group-hover:scale-105" viewBox="0 0 240 140" fill="none">
           <path d="M48 70H96M144 70H192" stroke={theme.stroke} strokeWidth="2" strokeLinecap="round" strokeDasharray="5 6" />
           <rect x="20" y="38" width="56" height="64" rx="16" fill={theme.fill} stroke={theme.stroke} strokeWidth="1.5" />
-          <rect x="92" y="26" width="56" height="88" rx="18" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.16)" />
+          <rect x="92" y="26" width="56" height="88" rx="18" fill="rgba(15,23,42,0.03)" stroke="rgba(15,23,42,0.12)" />
           <rect x="164" y="38" width="56" height="64" rx="16" fill={theme.fill} stroke={theme.stroke} strokeWidth="1.5" />
           <circle cx="48" cy="70" r="10" fill={theme.stroke} fillOpacity="0.8" />
           <circle cx="120" cy="70" r="12" fill={theme.stroke} fillOpacity="0.7" />
           <circle cx="192" cy="70" r="10" fill={theme.stroke} fillOpacity="0.8" />
-          <path d="M108 54H132M108 70H132M108 86H126" stroke="rgba(255,255,255,0.55)" strokeWidth="2" strokeLinecap="round" />
+          <path d="M108 54H132M108 70H132M108 86H126" stroke="rgba(15,23,42,0.6)" strokeWidth="2" strokeLinecap="round" />
         </svg>
-        <span className={`absolute bottom-5 z-10 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-bold ${theme.text}`}>
+        <span className={`absolute bottom-5 z-10 rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs font-bold ${theme.text}`}>
           Hybrid Retrieval
         </span>
       </div>
@@ -420,21 +474,21 @@ function ProjectVisual({ project }) {
 
   if (project.category === "NLP") {
     return (
-      <div className="relative flex h-44 items-center justify-center overflow-hidden bg-[#0B1020]">
+      <div className="relative flex h-44 items-center justify-center overflow-hidden bg-slate-50/70 border-b border-slate-100">
         <div className={`absolute h-40 w-40 rounded-full ${theme.glow} blur-3xl transition group-hover:scale-125`} />
-        <div className="relative z-10 w-60 rounded-2xl border border-white/10 bg-white/[0.055] p-4 shadow-xl transition duration-500 group-hover:-translate-y-1">
+        <div className="relative z-10 w-60 rounded-2xl border border-slate-200 bg-white/90 p-4 shadow-md transition duration-500 group-hover:-translate-y-1">
           <div className="mb-3 flex items-center gap-2">
             <span className="h-2.5 w-2.5 rounded-full bg-red-400" />
             <span className="h-2.5 w-2.5 rounded-full bg-yellow-400" />
             <span className="h-2.5 w-2.5 rounded-full bg-green-400" />
           </div>
           <div className="space-y-2">
-            <div className="h-3 w-44 rounded-full bg-slate-600/70" />
-            <div className="h-3 w-36 rounded-full bg-slate-700/70" />
+            <div className="h-3 w-44 rounded-full bg-slate-200" />
+            <div className="h-3 w-36 rounded-full bg-slate-300" />
             <div className="mt-4 grid grid-cols-3 gap-2">
-              <div className="rounded-lg border border-emerald-300/20 bg-emerald-300/10 px-2 py-1 text-center text-[10px] font-bold text-emerald-200">Clean</div>
-              <div className="rounded-lg border border-yellow-300/20 bg-yellow-300/10 px-2 py-1 text-center text-[10px] font-bold text-yellow-200">Offensive</div>
-              <div className="rounded-lg border border-red-300/20 bg-red-300/10 px-2 py-1 text-center text-[10px] font-bold text-red-200">Hate</div>
+              <div className="rounded-lg border border-emerald-300/20 bg-emerald-50 px-2 py-1 text-center text-[10px] font-bold text-emerald-700">Clean</div>
+              <div className="rounded-lg border border-yellow-300/20 bg-yellow-50 px-2 py-1 text-center text-[10px] font-bold text-yellow-700">Offensive</div>
+              <div className="rounded-lg border border-red-300/20 bg-red-50 px-2 py-1 text-center text-[10px] font-bold text-red-700">Hate</div>
             </div>
           </div>
         </div>
@@ -444,11 +498,11 @@ function ProjectVisual({ project }) {
 
   if (project.title.includes("Self-Refined")) {
     return (
-      <div className="relative flex h-44 items-center justify-center overflow-hidden bg-[#0B1020]">
+      <div className="relative flex h-44 items-center justify-center overflow-hidden bg-slate-50/70 border-b border-slate-100">
         <div className={`absolute h-40 w-40 rounded-full ${theme.glow} blur-3xl transition group-hover:scale-125`} />
         <svg className="relative z-10 h-36 w-56 transition duration-500 group-hover:rotate-1 group-hover:scale-105" viewBox="0 0 240 150" fill="none">
           <rect x="26" y="48" width="54" height="54" rx="14" fill={theme.fill} stroke={theme.stroke} />
-          <rect x="93" y="22" width="54" height="54" rx="14" fill="rgba(255,255,255,0.05)" stroke="rgba(255,255,255,0.16)" />
+          <rect x="93" y="22" width="54" height="54" rx="14" fill="rgba(15,23,42,0.03)" stroke="rgba(15,23,42,0.12)" />
           <rect x="160" y="48" width="54" height="54" rx="14" fill={theme.fill} stroke={theme.stroke} />
           <path
             d="M80 70C98 48 106 46 120 49M147 49C165 47 174 54 186 70M160 94C139 121 100 120 80 94"
@@ -457,28 +511,28 @@ function ProjectVisual({ project }) {
             strokeLinecap="round"
             strokeDasharray="5 6"
           />
-          <text x="53" y="80" textAnchor="middle" fill="white" fontSize="13" fontWeight="700">LLM</text>
-          <text x="120" y="54" textAnchor="middle" fill="white" fontSize="12" fontWeight="700">Reward</text>
-          <text x="187" y="80" textAnchor="middle" fill="white" fontSize="13" fontWeight="700">Agent</text>
+          <text x="53" y="80" textAnchor="middle" fill="#0F172A" fontSize="13" fontWeight="700">LLM</text>
+          <text x="120" y="54" textAnchor="middle" fill="#0F172A" fontSize="12" fontWeight="700">Reward</text>
+          <text x="187" y="80" textAnchor="middle" fill="#0F172A" fontSize="13" fontWeight="700">Agent</text>
         </svg>
       </div>
     );
   }
 
   return (
-    <div className="relative flex h-44 items-center justify-center overflow-hidden bg-[#0B1020]">
+    <div className="relative flex h-44 items-center justify-center overflow-hidden bg-slate-50/70 border-b border-slate-100">
       <div className={`absolute h-40 w-40 rounded-full ${theme.glow} blur-3xl transition group-hover:scale-125`} />
-      <div className="relative z-10 grid h-28 w-56 grid-cols-4 items-end gap-3 rounded-2xl border border-white/10 bg-white/[0.055] p-5 shadow-xl transition duration-500 group-hover:-translate-y-1 group-hover:scale-105">
+      <div className="relative z-10 grid h-28 w-56 grid-cols-4 items-end gap-3 rounded-2xl border border-slate-200 bg-white/90 p-5 shadow-md transition duration-500 group-hover:-translate-y-1 group-hover:scale-105">
         {[72, 42, 58, 86].map((height, index) => (
-          <div key={`${height}-${index}`} className="relative flex items-end justify-center rounded-lg bg-slate-800/80">
+          <div key={`${height}-${index}`} className="relative flex items-end justify-center rounded-lg bg-slate-200/50 h-full w-full">
             <div
-              className="w-full rounded-lg bg-gradient-to-t from-cyan-400/80 to-blue-300/80 shadow-[0_0_18px_rgba(34,211,238,.25)]"
+              className="w-full rounded-lg bg-gradient-to-t from-cyan-500/80 to-blue-500/80 shadow-[0_0_18px_rgba(6,182,212,.15)]"
               style={{ height: `${height}%`, animationDelay: `${index * 120}ms` }}
             />
           </div>
         ))}
       </div>
-      <span className={`absolute bottom-5 z-10 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs font-bold ${theme.text}`}>
+      <span className={`absolute bottom-5 z-10 rounded-full border border-slate-200 bg-white/90 px-3 py-1 text-xs font-bold ${theme.text}`}>
         Dashboard RL
       </span>
     </div>
@@ -489,15 +543,15 @@ function PipelineSteps({ pipeline }) {
   const steps = pipeline.split("→").map((step) => step.trim());
 
   return (
-    <div className="mt-5 rounded-2xl border border-slate-800 bg-slate-950/40 p-4">
-      <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-cyan-300">Pipeline</p>
+    <div className="mt-5 rounded-2xl border border-slate-100 bg-slate-50/50 p-4">
+      <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.2em] text-violet-600">Pipeline</p>
       <div className="flex flex-wrap items-center gap-2">
         {steps.map((step, index) => (
           <React.Fragment key={`${step}-${index}`}>
-            <span className="rounded-xl border border-slate-700/70 bg-slate-900/80 px-3 py-2 text-xs font-semibold leading-5 text-slate-100">
+            <span className="rounded-xl border border-slate-200 bg-white px-3 py-2 text-xs font-semibold leading-5 text-slate-700">
               {step}
             </span>
-            {index < steps.length - 1 && <span className="text-cyan-300/70">→</span>}
+            {index < steps.length - 1 && <span className="text-slate-400">→</span>}
           </React.Fragment>
         ))}
       </div>
@@ -507,7 +561,7 @@ function PipelineSteps({ pipeline }) {
 
 function ProjectCard({ project }) {
   return (
-    <article className="group overflow-hidden rounded-2xl liquid-card transition hover:-translate-y-2 hover:border-blue-300/40 hover:shadow-2xl hover:shadow-blue-950/30">
+    <article className="group overflow-hidden rounded-2xl liquid-card transition hover:-translate-y-2 hover:border-blue-400/30 hover:shadow-xl hover:shadow-blue-900/5">
       <ProjectVisual project={project} />
       <div className="p-6">
         <div className="mb-4 flex flex-wrap gap-2">
@@ -518,12 +572,12 @@ function ProjectCard({ project }) {
           ))}
         </div>
         <p className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-slate-500">{project.type}</p>
-        <h3 className="font-heading text-xl font-semibold text-white">{project.title}</h3>
-        <p className="mt-3 text-sm leading-7 text-slate-400">{project.description}</p>
+        <h3 className="font-heading text-xl font-semibold text-slate-900">{project.title}</h3>
+        <p className="mt-3 text-sm leading-7 text-slate-600">{project.description}</p>
         <PipelineSteps pipeline={project.pipeline} />
         <div className="mt-5 flex flex-wrap gap-2">
           {project.metrics.map((metric) => (
-            <span key={metric} className="rounded-lg border border-slate-800 bg-slate-950/50 px-3 py-1 text-xs font-semibold text-slate-300">
+            <span key={metric} className="rounded-lg border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-semibold text-slate-600">
               {metric}
             </span>
           ))}
@@ -533,11 +587,11 @@ function ProjectCard({ project }) {
             href={project.link}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-300 transition hover:gap-3 hover:text-blue-200"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition hover:gap-3 hover:text-blue-700"
           >
             View Repository <span>→</span>
           </a>
-          <a href={project.link} target="_blank" rel="noreferrer" className="text-slate-400 transition hover:text-white">
+          <a href={project.link} target="_blank" rel="noreferrer" className="text-slate-400 transition hover:text-slate-800">
             ⌘
           </a>
         </div>
@@ -550,16 +604,16 @@ function Hero() {
   return (
     <section className="relative z-10 mx-auto grid max-w-7xl items-center gap-16 px-8 pb-24 pt-16 md:grid-cols-[1.15fr_0.85fr] md:pt-24 lg:px-10 xl:px-12">
       <Reveal className="space-y-6">
-        <p className="font-heading text-sm font-bold uppercase tracking-[0.3em] text-cyan-300">AI / ML Engineer Portfolio</p>
-        <h1 className="font-heading text-5xl font-bold leading-tight text-white md:text-6xl">{profile.name}</h1>
-        <h2 className="font-heading text-2xl font-medium text-slate-200/85 md:text-3xl">NLP, RAG Systems & Reinforcement Learning</h2>
-        <p className="max-w-2xl text-lg leading-relaxed text-slate-400">
-          Computer Science student building AI/ML projects in Vietnamese NLP, RAG systems, and reinforcement learning. Seeking internship opportunities to apply machine learning and software engineering skills in real-world projects.
+        <p className="font-heading text-sm font-bold uppercase tracking-[0.3em] text-violet-600">AI / ML Engineer Portfolio</p>
+        <h1 className="font-heading text-5xl font-bold leading-tight text-slate-900 md:text-6xl">{profile.name}</h1>
+        <h2 className="font-heading text-2xl font-medium text-slate-700 md:text-3xl">Machine Learning, Deep Learning & Computer Vision</h2>
+        <p className="max-w-2xl text-lg leading-relaxed text-slate-600">
+          Computer Science student specializing in Machine Learning, Deep Learning, and Computer Vision. Experienced in engineering robust AI pipelines, ranging from advanced image segmentation and predictive modeling to intelligent agentic workflows. Seeking an AI/ML Engineer Intern position to apply technical rigor and build scalable, real-world solutions.
         </p>
         <div className="flex flex-wrap gap-4 pt-3">
           <a
             href="#projects"
-            className="inline-flex items-center gap-2 rounded-xl bg-violet-500 px-6 py-3 font-heading font-medium text-white shadow-lg shadow-violet-500/20 transition hover:-translate-y-1 hover:bg-violet-500/90"
+            className="inline-flex items-center gap-2 rounded-xl bg-violet-600 px-6 py-3 font-heading font-medium text-white shadow-lg shadow-violet-600/15 transition hover:-translate-y-1 hover:bg-violet-700"
           >
             View Projects <span>→</span>
           </a>
@@ -567,14 +621,14 @@ function Hero() {
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-[#1F2937] px-6 py-3 font-heading font-medium text-slate-100 transition hover:-translate-y-1 hover:border-blue-300/50 hover:text-blue-300"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-6 py-3 font-heading font-medium text-slate-700 transition hover:-translate-y-1 hover:border-blue-400/40 hover:text-blue-600 hover:bg-white"
           >
             GitHub Portfolio <span>↗</span>
           </a>
           <a
             href={profile.resume}
             download
-            className="inline-flex items-center gap-2 rounded-xl border border-[#1F2937] px-6 py-3 font-heading font-medium text-slate-100 transition hover:-translate-y-1 hover:border-cyan-300/50 hover:text-cyan-300"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-6 py-3 font-heading font-medium text-slate-700 transition hover:-translate-y-1 hover:border-cyan-400/40 hover:text-cyan-600 hover:bg-white"
           >
             Download CV <span>↓</span>
           </a>
@@ -591,7 +645,7 @@ function Highlights() {
   return (
     <section className="relative z-10 mx-auto max-w-7xl px-6 pb-24">
       <Reveal className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        <HighlightCard value="4" label="Featured Projects" accent="blue" />
+        <HighlightCard value="5" label="Featured Projects" accent="blue" />
         <HighlightCard value="AI/ML" label="NLP, RAG, RL" accent="violet" />
         <HighlightCard value="Full Stack" label="FastAPI, Next.js" accent="cyan" />
         <HighlightCard value="Open" label="Seeking Internships" accent="green" />
@@ -605,19 +659,19 @@ function About() {
     <section id="about" className="relative z-10 mx-auto max-w-7xl px-6 py-24">
       <Reveal className="grid gap-12 md:grid-cols-5">
         <div className="md:col-span-2">
-          <p className="mb-4 font-heading text-sm font-bold uppercase tracking-[0.3em] text-cyan-300">01. About</p>
-          <h2 className="font-heading text-4xl font-bold text-white">Bridging Research & Implementation</h2>
+          <p className="mb-4 font-heading text-sm font-bold uppercase tracking-[0.3em] text-violet-600">01. About</p>
+          <h2 className="font-heading text-4xl font-bold text-slate-900">Bridging Research & Implementation</h2>
         </div>
         <div className="space-y-6 md:col-span-3">
-          <p className="text-lg leading-relaxed text-slate-400">
+          <p className="text-lg leading-relaxed text-slate-600">
             I am a Computer Science student at UIT - VNUHCM with a strong interest in AI/ML, NLP, RAG systems, and reinforcement learning.
           </p>
-          <p className="text-lg leading-relaxed text-slate-400">
+          <p className="text-lg leading-relaxed text-slate-600">
             I enjoy turning research ideas into practical implementations through project-based learning, system building, and experimentation. My approach combines reading papers with building end-to-end pipelines, from data processing to API demos.
           </p>
           <div className="flex flex-wrap gap-3 pt-2">
             {["Python", "PyTorch", "FastAPI", "LangChain", "LangGraph", "Docker", "Elasticsearch", "Milvus", "Next.js"].map((item) => (
-              <span key={item} className="rounded-full border border-slate-700 bg-slate-800/70 px-3 py-1 text-sm text-slate-300">
+              <span key={item} className="rounded-full border border-slate-200 bg-white/80 px-3 py-1 text-sm text-slate-600 shadow-sm">
                 {item}
               </span>
             ))}
@@ -652,8 +706,8 @@ function Projects() {
             onClick={() => setActive(filter)}
             className={`rounded-xl border px-4 py-2 text-sm font-semibold transition ${
               active === filter
-                ? "border-blue-300/50 bg-blue-400/15 text-blue-200"
-                : "border-slate-700 bg-slate-900/60 text-slate-400 hover:border-slate-500 hover:text-slate-200"
+                ? "border-blue-500/40 bg-blue-50 text-blue-700 shadow-sm"
+                : "border-slate-200 bg-white/75 text-slate-600 hover:border-slate-400 hover:text-slate-900"
             }`}
           >
             {filter}
@@ -673,39 +727,39 @@ function Projects() {
 
 function OtherProjectCard({ project }) {
   const accentStyles = {
-    cyan: "hover:border-cyan-300/40 text-cyan-200",
-    violet: "hover:border-violet-300/40 text-violet-200",
-    blue: "hover:border-blue-300/40 text-blue-200",
-    green: "hover:border-emerald-300/40 text-emerald-200",
+    cyan: "hover:border-cyan-400/40 text-cyan-700",
+    violet: "hover:border-violet-400/40 text-violet-700",
+    blue: "hover:border-blue-400/40 text-blue-700",
+    green: "hover:border-emerald-400/40 text-emerald-700",
   };
 
   return (
     <article className={`h-full rounded-2xl liquid-card p-5 transition hover:-translate-y-1 ${accentStyles[project.accent] || accentStyles.cyan}`}>
       <div className="mb-4 flex items-center justify-between gap-3">
-        <span className="rounded-full border border-slate-700 bg-slate-950/50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-400">
+        <span className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-[11px] font-bold uppercase tracking-[0.18em] text-slate-500">
           {project.category}
         </span>
-        <a href={project.link} target="_blank" rel="noreferrer" className="text-slate-500 transition hover:text-white" aria-label={`Open ${project.title}`}>
+        <a href={project.link} target="_blank" rel="noreferrer" className="text-slate-400 transition hover:text-slate-800" aria-label={`Open ${project.title}`}>
           ↗
         </a>
       </div>
-      <h3 className="font-heading text-lg font-semibold text-white">{project.title}</h3>
-      <p className="mt-3 text-sm leading-6 text-slate-400">{project.description}</p>
+      <h3 className="font-heading text-lg font-semibold text-slate-900">{project.title}</h3>
+      <p className="mt-3 text-sm leading-6 text-slate-600">{project.description}</p>
       <div className="mt-5 flex flex-wrap gap-2">
         {project.stack.slice(0, 5).map((item) => (
           <Badge key={item} accent={project.accent}>{item}</Badge>
         ))}
       </div>
-      <details className="mt-5 rounded-2xl border border-slate-800 bg-slate-950/35 p-4 text-sm text-slate-400">
-        <summary className="cursor-pointer font-semibold text-slate-200 transition hover:text-cyan-200">
+      <details className="mt-5 rounded-2xl border border-slate-100 bg-slate-50/50 p-4 text-sm text-slate-600">
+        <summary className="cursor-pointer font-semibold text-slate-700 transition hover:text-cyan-700">
           View pipeline and implementation details
         </summary>
         {project.pipeline && <PipelineSteps pipeline={project.pipeline} />}
         {project.details && (
-          <ul className="mt-5 space-y-2 text-sm text-slate-400">
+          <ul className="mt-5 space-y-2 text-sm text-slate-600">
             {project.details.map((detail) => (
               <li key={detail} className="flex gap-2">
-                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-300" />
+                <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-cyan-500" />
                 <span>{detail}</span>
               </li>
             ))}
@@ -746,15 +800,15 @@ function Skills() {
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {skillGroups.map((group, index) => (
           <Reveal key={group.title} delay={index * 90}>
-            <div className="h-full rounded-2xl liquid-card p-6 transition hover:-translate-y-2 hover:border-cyan-300/30">
-              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-800 text-sm font-black text-cyan-200">
+            <div className="h-full rounded-2xl liquid-card p-6 transition hover:-translate-y-2 hover:border-cyan-400/20">
+              <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-xl bg-slate-100 text-sm font-black text-cyan-700 shadow-sm border border-slate-200/50">
                 {group.icon}
               </div>
-              <h3 className="font-heading text-lg font-semibold text-white">{group.title}</h3>
-              <ul className="mt-5 space-y-3 text-sm text-slate-400">
+              <h3 className="font-heading text-lg font-semibold text-slate-900">{group.title}</h3>
+              <ul className="mt-5 space-y-3 text-sm text-slate-650">
                 {group.items.map((item) => (
                   <li key={item} className="flex items-center gap-2">
-                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-300" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
                     {item}
                   </li>
                 ))}
@@ -771,28 +825,28 @@ function ResumeSnapshot() {
   return (
     <section className="relative z-10 mx-auto max-w-7xl px-6 py-24 text-center">
       <Reveal className="mx-auto max-w-2xl">
-        <p className="mb-4 font-heading text-sm font-bold uppercase tracking-[0.3em] text-cyan-300">04. Resume</p>
-        <h2 className="mb-8 font-heading text-4xl font-bold text-white">Education & Focus</h2>
+        <p className="mb-4 font-heading text-sm font-bold uppercase tracking-[0.3em] text-violet-600">04. Resume</p>
+        <h2 className="mb-8 font-heading text-4xl font-bold text-slate-900">Education & Focus</h2>
         <div className="mb-8 space-y-4 rounded-2xl liquid-card-strong p-8 text-left">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h3 className="font-heading text-xl font-semibold text-white">B.Sc. Computer Science</h3>
-              <p className="text-blue-300">University of Information Technology - VNUHCM</p>
+              <h3 className="font-heading text-xl font-semibold text-slate-900">B.Sc. Computer Science</h3>
+              <p className="text-blue-600">University of Information Technology - VNUHCM</p>
             </div>
-            <span className="rounded-full bg-[#0B1020] px-3 py-1 text-sm text-slate-400">Present</span>
+            <span className="rounded-full bg-slate-100 border border-slate-200/50 px-3 py-1 text-sm text-slate-500 shadow-sm">Present</span>
           </div>
-          <p className="text-slate-400">
-            <span className="font-medium text-slate-100">Focus:</span> AI/ML, NLP, RAG Systems, Reinforcement Learning
+          <p className="text-slate-600">
+            <span className="font-medium text-slate-800">Focus:</span> AI/ML, NLP, RAG Systems, Reinforcement Learning
           </p>
-          <p className="text-slate-400">
-            <span className="font-medium text-slate-100">Target:</span> AI/ML Engineering & Research Internships
+          <p className="text-slate-600">
+            <span className="font-medium text-slate-800">Target:</span> AI/ML Engineering & Research Internships
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-3">
           <a
             href={profile.resume}
             download
-            className="inline-flex items-center gap-2 rounded-xl bg-blue-500 px-8 py-3 font-heading font-medium text-white shadow-lg shadow-blue-500/20 transition hover:-translate-y-1 hover:bg-blue-500/90"
+            className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-8 py-3 font-heading font-medium text-white shadow-lg shadow-blue-600/15 transition hover:-translate-y-1 hover:bg-blue-700"
           >
             Download Full CV <span>↓</span>
           </a>
@@ -800,7 +854,7 @@ function ResumeSnapshot() {
             href={profile.github}
             target="_blank"
             rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-xl border border-[#1F2937] px-8 py-3 font-heading font-medium text-slate-100 transition hover:border-blue-300/50 hover:text-blue-300"
+            className="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white/70 px-8 py-3 font-heading font-medium text-slate-700 transition hover:-translate-y-1 hover:border-blue-400/40 hover:text-blue-600 hover:bg-white"
           >
             View GitHub Portfolio <span>↗</span>
           </a>
@@ -813,10 +867,10 @@ function ResumeSnapshot() {
 function Contact() {
   return (
     <section id="contact" className="relative z-10 overflow-hidden py-24">
-      <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-400/5 blur-[100px]" />
+      <div className="absolute left-1/2 top-1/2 h-[500px] w-[500px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-400/3 blur-[100px]" />
       <Reveal className="relative z-10 mx-auto max-w-2xl px-6 text-center">
-        <h2 className="mb-6 font-heading text-4xl font-bold text-white md:text-5xl">Let's Build Something Together</h2>
-        <p className="mb-12 text-lg text-slate-400">Interested in discussing internship opportunities, AI/ML projects, or collaborations? Let's connect.</p>
+        <h2 className="mb-6 font-heading text-4xl font-bold text-slate-900 md:text-5xl">Let's Build Something Together</h2>
+        <p className="mb-12 text-lg text-slate-650">Interested in discussing internship opportunities, AI/ML projects, or collaborations? Let's connect.</p>
         <div className="flex justify-center gap-5">
           <IconButton href={`mailto:${profile.email}`} label="Email">✉</IconButton>
           <IconButton href={profile.linkedin} label="LinkedIn">in</IconButton>
@@ -830,11 +884,11 @@ function Contact() {
 function PrototypeChecks() {
   return (
     <section className="relative z-10 mx-auto max-w-7xl px-6 pb-8">
-      <details className="rounded-2xl border border-slate-800 bg-slate-950/45 p-4 text-sm text-slate-400">
-        <summary className="cursor-pointer font-semibold text-slate-300">Prototype checks</summary>
+      <details className="rounded-2xl border border-slate-200 bg-slate-100/50 p-4 text-sm text-slate-500">
+        <summary className="cursor-pointer font-semibold text-slate-700">Prototype checks</summary>
         <div className="mt-3 grid gap-2 md:grid-cols-2">
           {smokeTests.map((test) => (
-            <p key={test.name} className={test.pass ? "text-emerald-300" : "text-red-300"}>
+            <p key={test.name} className={test.pass ? "text-emerald-600" : "text-red-600"}>
               {test.pass ? "✓" : "✕"} {test.name}
             </p>
           ))}
@@ -846,7 +900,7 @@ function PrototypeChecks() {
 
 export default function App() {
   return (
-    <main className="min-h-screen overflow-hidden bg-[#0B1020] text-slate-100">
+    <main className="min-h-screen overflow-hidden bg-[#F8FAFC] text-slate-800">
       <style>{`
         html { scroll-behavior: smooth; }
         @keyframes aurora {
@@ -866,14 +920,14 @@ export default function App() {
         }
         .liquid-card {
           position: relative;
-          border: 1px solid rgba(255,255,255,.12);
+          border: 1px solid rgba(15, 23, 42, 0.08);
           background:
-            linear-gradient(135deg, rgba(255,255,255,.105), rgba(255,255,255,.035)),
-            radial-gradient(circle at 15% 0%, rgba(96,165,250,.16), transparent 34%),
-            radial-gradient(circle at 85% 10%, rgba(139,92,246,.13), transparent 32%);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.13), 0 24px 80px rgba(0,0,0,.28);
-          backdrop-filter: blur(22px) saturate(155%);
-          -webkit-backdrop-filter: blur(22px) saturate(155%);
+            linear-gradient(135deg, rgba(255,255,255,0.85), rgba(255,255,255,0.45)),
+            radial-gradient(circle at 15% 0%, rgba(96,165,250,0.06), transparent 34%),
+            radial-gradient(circle at 85% 10%, rgba(139,92,246,0.05), transparent 32%);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.7), 0 20px 50px rgba(15, 23, 42, 0.04);
+          backdrop-filter: blur(22px) saturate(135%);
+          -webkit-backdrop-filter: blur(22px) saturate(135%);
         }
         .liquid-card::before {
           content: "";
@@ -881,8 +935,8 @@ export default function App() {
           inset: 0;
           pointer-events: none;
           border-radius: inherit;
-          background: linear-gradient(120deg, rgba(255,255,255,.2), transparent 28%, transparent 72%, rgba(255,255,255,.08));
-          opacity: .52;
+          background: linear-gradient(120deg, rgba(255,255,255,0.5), transparent 28%, transparent 72%, rgba(255,255,255,0.2));
+          opacity: .3;
         }
         .liquid-card::after {
           content: "";
@@ -892,7 +946,7 @@ export default function App() {
           left: -35%;
           width: 26%;
           pointer-events: none;
-          background: linear-gradient(90deg, transparent, rgba(255,255,255,.16), transparent);
+          background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
           opacity: 0;
         }
         .liquid-card:hover::after {
@@ -900,31 +954,31 @@ export default function App() {
         }
         .liquid-card-strong {
           position: relative;
-          border: 1px solid rgba(255,255,255,.14);
+          border: 1px solid rgba(15, 23, 42, 0.1);
           background:
-            linear-gradient(135deg, rgba(255,255,255,.13), rgba(255,255,255,.045)),
-            radial-gradient(circle at 20% 0%, rgba(34,211,238,.18), transparent 34%),
-            radial-gradient(circle at 90% 20%, rgba(139,92,246,.18), transparent 36%);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 30px 90px rgba(0,0,0,.34);
-          backdrop-filter: blur(28px) saturate(170%);
-          -webkit-backdrop-filter: blur(28px) saturate(170%);
+            linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.5)),
+            radial-gradient(circle at 20% 0%, rgba(34,211,238,0.07), transparent 34%),
+            radial-gradient(circle at 90% 20%, rgba(139,92,246,0.07), transparent 36%);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 24px 60px rgba(15, 23, 42, 0.06);
+          backdrop-filter: blur(28px) saturate(150%);
+          -webkit-backdrop-filter: blur(28px) saturate(150%);
         }
         .liquid-pill {
-          border: 1px solid rgba(255,255,255,.14);
-          background: rgba(255,255,255,.07);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.12);
+          border: 1px solid rgba(15, 23, 42, 0.08);
+          background: rgba(255, 255, 255, 0.45);
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
           backdrop-filter: blur(16px) saturate(150%);
           -webkit-backdrop-filter: blur(16px) saturate(150%);
         }
         .nav-shell {
-          border: 1px solid rgba(255,255,255,.12);
+          border: 1px solid rgba(15, 23, 42, 0.08);
           background:
-            linear-gradient(135deg, rgba(255,255,255,.12), rgba(255,255,255,.045)),
-            radial-gradient(circle at 15% 0%, rgba(96,165,250,.16), transparent 36%),
-            radial-gradient(circle at 90% 10%, rgba(139,92,246,.14), transparent 34%);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,.14), 0 20px 60px rgba(0,0,0,.24);
-          backdrop-filter: blur(26px) saturate(170%);
-          -webkit-backdrop-filter: blur(26px) saturate(170%);
+            linear-gradient(135deg, rgba(255,255,255,0.8), rgba(255,255,255,0.45)),
+            radial-gradient(circle at 15% 0%, rgba(96,165,250,0.07), transparent 36%),
+            radial-gradient(circle at 90% 10%, rgba(139,92,246,0.06), transparent 34%);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 15px 40px rgba(15, 23, 42, 0.04);
+          backdrop-filter: blur(26px) saturate(150%);
+          -webkit-backdrop-filter: blur(26px) saturate(150%);
         }
         .nav-link {
           position: relative;
@@ -941,12 +995,12 @@ export default function App() {
           width: 0;
           transform: translateX(-50%);
           border-radius: 999px;
-          background: linear-gradient(90deg, #67E8F9, #A78BFA);
+          background: linear-gradient(90deg, #0284C7, #7C3AED);
           transition: width .25s ease;
         }
         .nav-link:hover {
-          color: white;
-          background: rgba(255,255,255,.07);
+          color: #0F172A;
+          background: rgba(15, 23, 42, 0.04);
           transform: translateY(-1px);
         }
         .nav-link:hover::after {
@@ -968,15 +1022,15 @@ export default function App() {
       <nav className="sticky top-4 z-50 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="nav-shell mx-auto flex items-center justify-between rounded-[1.6rem] px-4 py-3">
           <a href="#" className="group flex items-center gap-3">
-            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-300 via-blue-400 to-violet-500 text-sm font-black text-[#0B1020] shadow-lg shadow-cyan-500/20 transition group-hover:-translate-y-0.5">
+            <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-gradient-to-br from-cyan-400 via-blue-500 to-violet-600 text-sm font-black text-white shadow-lg shadow-cyan-500/10 transition group-hover:-translate-y-0.5">
               LB
             </span>
-            <span className="font-heading text-xl font-bold text-white">
-              Long<span className="text-blue-300">Nguyen</span>
+            <span className="font-heading text-xl font-bold text-slate-900">
+              Long<span className="text-blue-600">Nguyen</span>
             </span>
           </a>
 
-          <div className="hidden items-center rounded-full border border-white/10 bg-white/[0.045] p-1 text-sm text-slate-400 md:flex">
+          <div className="hidden items-center rounded-full border border-slate-200/60 bg-white/60 p-1 text-sm text-slate-500 md:flex">
             <a href="#projects" className="nav-link">Projects</a>
             <a href="#about" className="nav-link">About</a>
             <a href="#skills" className="nav-link">Skills</a>
@@ -985,7 +1039,7 @@ export default function App() {
 
           <a
             href={profile.resume}
-            className="rounded-2xl border border-white/12 bg-white/[0.07] px-4 py-2.5 text-sm font-semibold text-slate-100 shadow-inner shadow-white/5 transition hover:-translate-y-0.5 hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-cyan-100"
+            className="rounded-2xl border border-slate-200 bg-white/80 px-4 py-2.5 text-sm font-semibold text-slate-700 shadow-sm transition hover:-translate-y-0.5 hover:border-cyan-400/40 hover:bg-cyan-50 hover:text-cyan-700"
             download
           >
             Download CV ↓
@@ -1002,7 +1056,7 @@ export default function App() {
       <ResumeSnapshot />
       <Contact />
 
-      <footer className="relative z-10 border-t border-[#1F2937] py-8 text-center text-sm text-slate-500">
+      <footer className="relative z-10 border-t border-slate-200 py-8 text-center text-sm text-slate-500">
         Designed & built by Nguyen Ba Long. Last updated for AI/ML internship applications.
       </footer>
     </main>
