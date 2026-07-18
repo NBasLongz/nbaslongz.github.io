@@ -7,7 +7,7 @@ const profile = {
   email: "longnguyen132005@gmail.com",
   github: "https://github.com/NBasLongz",
   linkedin: "https://www.linkedin.com/in/nbl2005/",
-  resume: "/NguyenBaLongCV.pdf",
+  resume: "/NguyenBaLongCV_AI_Intern.pdf",
 };
 
 const projects = [
