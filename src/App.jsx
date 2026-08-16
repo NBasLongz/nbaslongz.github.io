@@ -14,14 +14,33 @@ const projects = [
   {
     title: "AIC Multimodal Video Retrieval System",
     category: "RAG",
-    type: "Research Project",
+    type: "AI Challenge 2026 / Multimodal System",
     description:
-      "I built a multi-modal pipeline that extracts keyframes, OCR text, and ASR transcripts. To improve search accuracy, I implemented a hybrid search engine combining Milvus (dense vectors) and Elasticsearch (sparse keywords).",
+      "A fast and accurate multimedia retrieval system for AI Challenge 2026, combining SigLIP2 dense vectors, BM25 text search, YOLOv11 scene graphs, Cross-Encoder reranking, and Rocchio relevance feedback with sub-second latency.",
     role: "Core Developer",
-    stack: ["SigLIP2", "Milvus", "Elasticsearch", "PaddleOCR", "Whisper", "Flask"],
-    problem: "Finding specific moments in large video datasets using natural language is often slow and inaccurate.",
-    solution: "I built a multi-modal pipeline that extracts keyframes, OCR text, and ASR transcripts. To improve search accuracy, I implemented a hybrid search engine combining Milvus (dense vectors) and Elasticsearch (sparse keywords). The results were merged using Weighted Reciprocal Rank Fusion (RRF) and fine-tuned with a BGE-Reranker.",
-    impact: "Achieved highly accurate frame-to-millisecond mapping, enabling fast and reliable natural language searches across complex video collections.",
+    stack: [
+      "SigLIP2",
+      "Milvus",
+      "Elasticsearch",
+      "YOLOv11",
+      "Whisper large-v3",
+      "PaddleOCR",
+      "bge-reranker-v2-m3",
+      "Rocchio Feedback",
+      "Redis",
+      "Flask",
+    ],
+    problem:
+      "Locating exact video moments (Known-Item Search), answering visual queries (Visual Q&A), and aligning sequential key events (TRAKE) across massive video archives under strict real-time response constraints.",
+    solution:
+      "I engineered an end-to-end multimodal retrieval architecture combining offline AI indexing with online multi-stream hybrid search:",
+    contributions: [
+      "Offline AI Ingestion: Extracted keyframes (H.264 normalized), Whisper large-v3 transcripts, PaddleOCR text, Florence-2 captions, and YOLOv11 spatial scene graphs. Indexed dense vectors into Milvus (SigLIP2 1152-dim & BGE-M3) and sparse text into Elasticsearch (BM25).",
+      "Online Hybrid Search & Reranking: Query decomposition (Gemini API + NLP rule-based fallback), fused multi-stream candidates via Reciprocal Rank Fusion (RRF, k=60), and fine-tuned results with Cross-Encoder (bge-reranker-v2-m3).",
+      "Interactive Tuning & Performance: Integrated real-time Rocchio Relevance Feedback vector refinement and a 0ms Redis response cache layer.",
+    ],
+    impact:
+      "Fully compliant with AI Challenge evaluation standards (R-Score & Final Score), supporting 1-click Top-100 bulk submission, sub-second latency with 0ms Redis cache hits, and precise frame-to-millisecond timestamp mapping.",
     image: "/images/AIC.png",
     slides: [
       { label: "Sơ đồ Hệ thống", image: "/images/AIC.png" },
@@ -214,7 +233,7 @@ const skillGroups = [
   {
     title: "Backend / Data",
     icon: "API",
-    items: ["FastAPI", "Flask", "PostgreSQL", "SQLAlchemy", "Pydantic", "RESTful API", "ChromaDB", "Milvus", "Elasticsearch"],
+    items: ["FastAPI", "Flask", "PostgreSQL", "SQLAlchemy", "Pydantic", "RESTful API", "ChromaDB", "Milvus", "Elasticsearch", "Redis"],
   },
   {
     title: "Tools / UI",
