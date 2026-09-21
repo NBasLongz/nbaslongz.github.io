@@ -797,7 +797,7 @@ function About() {
           <p className="font-heading text-sm font-bold uppercase tracking-[0.3em] text-violet-400">01. About Me</p>
           <h2 className="font-heading text-3xl md:text-4xl font-bold text-white leading-tight">Bridging Research & Implementation</h2>
           <p className="text-base md:text-lg leading-relaxed text-slate-350">
-            As a third-year Computer Science student at UIT (VNUHCM) with a GPA of 8.24/10, I specialize in developing end-to-end AI pipelines. My hands-on experience covers everything from data preprocessing and training neural networks to deploying multi-modal RAG and Agent workflows. I am actively seeking an AI/ML Intern position to apply my academic knowledge to real-world challenges and continuously grow as an engineer.
+            As a third-year Computer Science student at UIT (VNUHCM) with a GPA of 8.27/10, I specialize in developing end-to-end AI pipelines. My hands-on experience covers everything from data preprocessing and training neural networks to deploying multi-modal RAG and Agent workflows. I am actively seeking an AI/ML Intern position to apply my academic knowledge to real-world challenges and continuously grow as an engineer.
           </p>
           <div className="flex flex-wrap gap-2.5 pt-2">
             {["Python", "PyTorch", "FastAPI", "LangChain", "LangGraph", "Docker", "Elasticsearch", "Milvus", "Next.js", "OpenCV", "PostgreSQL", "ChromaDB"].map((item) => (
@@ -901,7 +901,10 @@ function ResumeSnapshot() {
               <h3 className="font-heading text-xl font-semibold text-white">B.Sc. Computer Science</h3>
               <p className="text-blue-400">University of Information Technology - VNUHCM</p>
             </div>
-            <span className="rounded-full bg-slate-950/40 border border-slate-800/40 px-3 py-1 text-sm text-slate-400 shadow-sm">Present</span>
+            <div className="flex items-center gap-2">
+              <span className="rounded-full bg-cyan-950/40 border border-cyan-500/30 px-3 py-1 text-xs font-bold text-cyan-300 shadow-sm">GPA: 8.27 / 10.0</span>
+              <span className="rounded-full bg-slate-950/40 border border-slate-800/40 px-3 py-1 text-xs text-slate-400 shadow-sm">Expected 2027</span>
+            </div>
           </div>
           <p className="text-slate-300">
             <span className="font-medium text-white">Focus:</span> AI/ML, NLP, RAG Systems, Reinforcement Learning
