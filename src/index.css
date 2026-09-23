@@ -132,6 +132,7 @@ body {
 /* 2. iOS Segmented Control Track (Sunken translucent tray for tabs) */
 .ios-segmented-track {
   display: inline-flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: 0.375rem;
   padding: 0.375rem;
@@ -143,6 +144,15 @@ body {
   box-shadow: 
     inset 0 1.5px 3px 0 rgba(15, 23, 42, 0.06),
     0 1px 2px 0 rgba(255, 255, 255, 0.8);
+  max-width: 100%;
+}
+
+.ios-segmented-track.grid {
+  display: grid;
+}
+
+.ios-segmented-track.flex {
+  display: flex;
 }
 
 /* 3. iOS Liquid Glass Tab Pill */

@@ -108,7 +108,7 @@ export default function BiomedicalLab({ project, onOpenSlide, onOpenPdf, onZoomI
         </div>
 
         {/* 4 Gallery Switcher Pills - iOS Segmented Control Track */}
-        <div className="ios-segmented-track grid grid-cols-2 sm:grid-cols-4 w-full p-1.5 gap-1.5">
+        <div className="ios-segmented-track flex flex-wrap w-full p-1.5 gap-1.5">
           {gallerySlides.map((slide, idx) => {
             const isActive = activeSlide === idx;
             return (
@@ -116,13 +116,13 @@ export default function BiomedicalLab({ project, onOpenSlide, onOpenPdf, onZoomI
                 key={idx}
                 type="button"
                 onClick={() => setActiveSlide(idx)}
-                className={`ios-glass-tab p-2 text-xs font-semibold text-center transition-all cursor-pointer ${
+                className={`ios-glass-tab flex-1 min-w-[125px] sm:min-w-[135px] py-2 px-2.5 text-xs font-semibold text-center transition-all cursor-pointer ${
                   isActive
                     ? "ios-glass-tab-active-dark"
                     : "hover:text-slate-900"
                 }`}
               >
-                <span className="truncate block">{slide.label}</span>
+                <span className="truncate block w-full">{slide.label}</span>
               </button>
             );
           })}
