@@ -14,22 +14,277 @@ html {
 
 body {
   font-family: 'Outfit', 'Inter', system-ui, sans-serif;
-  background-color: #F8FAFC;
-  color: #1E293B;
+  background-color: #FAFAFC;
+  color: #0F172A;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 7px;
+  height: 7px;
 }
 ::-webkit-scrollbar-track {
-  background: #F8FAFC;
+  background: #F1F5F9;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 116, 139, 0.2);
+  background: rgba(148, 163, 184, 0.4);
   border-radius: 999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 116, 139, 0.45);
+  background: rgba(100, 116, 139, 0.7);
+}
+
+/* Technical dot grid on #FAFAFC */
+.bg-grid-light {
+  background-image: radial-gradient(rgba(148, 163, 184, 0.22) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+/* Apple Liquid Glass Design System */
+.glass-liquid-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.03),
+    0 10px 25px -5px rgba(15, 23, 42, 0.04),
+    inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-liquid-card:hover {
+  border-color: rgba(203, 213, 225, 1);
+  box-shadow: 
+    0 2px 4px rgba(0, 0, 0, 0.04),
+    0 20px 35px -10px rgba(15, 23, 42, 0.08),
+    inset 0 1px 2px rgba(255, 255, 255, 1);
+}
+
+.glass-liquid-card-elevated {
+  position: relative;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(24px) saturate(190%);
+  -webkit-backdrop-filter: blur(24px) saturate(190%);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 
+    0 20px 40px -15px rgba(15, 23, 42, 0.07),
+    0 0 0 1px rgba(255, 255, 255, 0.8),
+    inset 0 1.5px 1px rgba(255, 255, 255, 1);
+}
+
+.glass-liquid-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(16px) saturate(160%);
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.95);
+  color: #334155;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-liquid-pill:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(203, 213, 225, 1);
+  color: #0F172A;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+}
+
+.glass-liquid-pill:active {
+  transform: scale(0.97);
+}
+
+.glass-liquid-pill-active {
+  background: #0F172A !important;
+  color: #FFFFFF !important;
+  border-color: #0F172A !important;
+  box-shadow: 
+    0 4px 14px rgba(15, 23, 42, 0.25),
+    inset 0 1.5px 1px rgba(255, 255, 255, 0.25) !important;
+}
+
+/* ==========================================================================
+   Apple iOS / visionOS Liquid Glass Elements
+   ========================================================================== */
+
+/* 1. iOS Floating Glass Bar (Navigation & Header Docks) */
+.ios-glass-bar {
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(28px) saturate(200%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 
+    0 1px 2px 0 rgba(0, 0, 0, 0.02),
+    0 10px 30px -4px rgba(15, 23, 42, 0.07),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.03);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* 2. iOS Segmented Control Track (Sunken translucent tray for tabs) */
+.ios-segmented-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem;
+  background: rgba(226, 232, 240, 0.48);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(203, 213, 225, 0.65);
+  border-radius: 1.25rem;
+  box-shadow: 
+    inset 0 1.5px 3px 0 rgba(15, 23, 42, 0.06),
+    0 1px 2px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* 3. iOS Liquid Glass Tab Pill */
+.ios-glass-tab {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.375rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 0.875rem;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: #475569;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  cursor: pointer;
+}
+
+.ios-glass-tab:hover {
+  color: #0F172A;
+  background: rgba(255, 255, 255, 0.65);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+.ios-glass-tab:active {
+  transform: scale(0.96);
+}
+
+/* Active iOS Liquid Glass Pill (Elevated white glass with specular highlight) */
+.ios-glass-tab-active {
+  color: #0F172A !important;
+  background: rgba(255, 255, 255, 0.98) !important;
+  border-color: rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 
+    0 3px 12px -1px rgba(15, 23, 42, 0.12),
+    0 1px 3px 0 rgba(15, 23, 42, 0.06),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 1) !important;
+  font-weight: 700;
+}
+
+/* Dark variant of active tab (sleek iOS Onyx Glass) */
+.ios-glass-tab-active-dark {
+  color: #FFFFFF !important;
+  background: linear-gradient(180deg, #1E293B 0%, #0F172A 100%) !important;
+  border-color: rgba(255, 255, 255, 0.18) !important;
+  box-shadow: 
+    0 4px 14px -1px rgba(15, 23, 42, 0.28),
+    0 1px 3px 0 rgba(15, 23, 42, 0.12),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.3) !important;
+  font-weight: 700;
+}
+
+/* 4. iOS Liquid Glass Interactive Action Button */
+.ios-glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  border-radius: 0.875rem;
+  box-shadow: 
+    0 2px 6px -1px rgba(15, 23, 42, 0.05),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.ios-glass-btn:hover {
+  background: rgba(255, 255, 255, 0.98);
+  border-color: rgba(203, 213, 225, 1);
+  transform: translateY(-1px);
+  box-shadow: 
+    0 6px 16px -2px rgba(15, 23, 42, 0.08),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 1);
+}
+
+.ios-glass-btn:active {
+  transform: scale(0.97);
+  box-shadow: 
+    0 1px 2px 0 rgba(15, 23, 42, 0.05),
+    inset 0 1px 2px 0 rgba(15, 23, 42, 0.06);
+}
+
+/* 5. iOS Floating Circular Control Button (Next/Prev, Icons) */
+.ios-glass-circle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 9999px;
+  box-shadow: 
+    0 4px 14px -2px rgba(15, 23, 42, 0.1),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.95);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.ios-glass-circle:hover {
+  background: rgba(255, 255, 255, 0.98);
+  transform: scale(1.08);
+  box-shadow: 
+    0 6px 18px -2px rgba(15, 23, 42, 0.15),
+    inset 0 1.5px 1px 0 rgba(255, 255, 255, 1);
+}
+
+.ios-glass-circle:active {
+  transform: scale(0.94);
+}
+
+/* Ambient spotlight */
+.spotlight-beam {
+  background: radial-gradient(circle at 50% 0%, rgba(99, 102, 241, 0.12), rgba(6, 182, 212, 0.08) 35%, transparent 70%);
+}
+
+/* Glass shine animation */
+@keyframes glassShimmer {
+  0% { transform: translateX(-150%) skewX(-20deg); }
+  100% { transform: translateX(200%) skewX(-20deg); }
+}
+
+.animate-shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.animate-shimmer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+  transform: translateX(-150%) skewX(-20deg);
+  animation: glassShimmer 3.5s infinite ease-in-out;
+  pointer-events: none;
 }
